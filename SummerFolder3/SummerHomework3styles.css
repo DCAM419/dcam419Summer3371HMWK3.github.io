@@ -70,12 +70,11 @@ a {
 a:visited {
     color: purple;
 }
-#TYpageBody { /*wanted to show where i got the idea for the theme
+#TYpageBody {
     background-image: url('Oiler3.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover; */
-
+    background-position: center;
+    background-size: cover;
 }
 
     
