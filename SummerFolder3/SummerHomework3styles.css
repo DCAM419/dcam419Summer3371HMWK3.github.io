@@ -70,11 +70,13 @@ a {
 a:visited {
     color: purple;
 }
-#TYpageBody {
-    background-image: url('Oiler3.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+#TYpageBody { 
+    background-image: url("Oiler3.jpg"); 
+    background-repeat: no-repeat; 
+    background-position: center 25%; 
+    background-size: cover; 
+    min-height: 100vh; 
+    margin: 0; 
 }
 
     
