@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    Program name: SummerHomework3Index.html
+    Author: Demetrius Cameron
+    Date created: 07/01/2026
+    Date last edited: 07/06/2026
+    Version: 1.0
+    Description: Patient Registration Form for MIS3371 Homework 3
+    -->
+    
+    <meta charset="UTF-8">
+    <title>Patient Registration Form</title>
+    <link href="SummerHomework3styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER / BANNER ================= -->
+<div id="banner">
+    
+    <img src="TestDownload.jpeg" alt="Houston Cougar Medical Logo" id="logo">
+
+    <h1>Houston Cougar Medical</h1>
+    <p id="toDateString">Today is: 
+        <script>
+            const today = new Date();
+            document.write(today.toDateString());
+        </script>
+    </p>
+</div>
+
+<!-- ================= MAIN FORM SECTION ================= -->
+<div id="main">
+
+<h2>Patient Registration Form</h2>
+
+<form action="TYpage3.html" id="registrationForm" onsubmit="return validateForm()">
+
+<table>
+
+<tr>
+    <td>First Name:</td>
+    <td><input type="text" name="firstname" id="firstname" maxlength="30" required 
+        pattern="^[A-Za-z'-]{1,30}$" title="First name: letters, apostrophes, and dashes only (1–30 characters)"
+        oninput="checkFirstName()" onblur="checkFirstName()">
+        <br>
+        <span id="firstnameError" class="error"></span>
+    </td>
+
+    <td>Middle Initial:</td>
+    <td><input type="text" name="middleinitial" id="middleinitial" maxlength="1"
+        pattern="^[A-Za-z]$"
+        title="Middle initial: one letter only"
+        oninput="checkMiddleInitial()" onblur="checkMiddleInitial()">
+        <br>
+        <span id="middleinitialError" class="error"></span>
+    
+    </td>
+
+    <td>Last Name:</td>
+    <td><input type="text" name="lastname" id="lastname" maxlength="30" required
+        pattern="^[A-Za-z' -]{1,30}$"
+        title="Last name: letters, apostrophes, dashes, and optional numbers (e.g., Smith3rd)"
+        oninput="checkLastName()" onblur="checkLastName()">
+        <br>
+        <span id="lastnameError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Date of Birth (MM/DD/YYYY):</td>
+    <td><input type="date" name="dob" id="dob" required
+        title="Date must not be in the future or more than 120 years ago"
+        oninput="checkDOB()" onblur="checkDOB()">
+        <br>
+        <span id="dobError" class="error"></span>
+    </td>
+
+    <td>SSN:</td>
+    <td><input type="password" name="ssn" id="ssn" maxlength="11" required
+        pattern="^\d{3}-\d{2}-\d{4}$"
+        title="Enter SSN in format: 123-45-6789"
+        oninput="checkSSN()" onblur="checkSSN()">
+        <br>
+        <span id="ssnError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Address Line 1:</td>
+    <td><input type="text" name="address1" id="address1" maxlength="30" required
+        pattern="^.{2,30}$"
+        title="Address must be 2–30 characters"
+        oninput="checkAddress1()" onblur="checkAddress1()">
+        <br>
+        <span id="address1Error" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Address Line 2:</td>
+    <td><input type="text" name="address2" id="address2" maxlength="30"
+        pattern="^.{0,30}$"
+        title="Optional (up to 30 characters)"
+        oninput="checkAddress2()" onblur="checkAddress2()">
+        <br>
+        <span id="address2Error" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>City:</td>
+    <td><input type="text" name="city" id="city" maxlength="30" required
+        pattern="^.{2,30}$" title="City must be 2–30 characters"
+        oninput="checkCity()" onblur="checkCity()">
+        <br>
+        <span id="cityError" class="error"></span>
+    </td>
+
+    <td>State:</td>
+    <td>
+    <select name="state" id="state" required title="Select your state" oninput="checkState()" onblur="checkState()">
+        <option value="">Select</option>
+
+        <option value="AL">AL</option>
+        <option value="AK">AK</option>
+        <option value="AZ">AZ</option>
+        <option value="AR">AR</option>
+        <option value="CA">CA</option>
+        <option value="CO">CO</option>
+        <option value="CT">CT</option>
+        <option value="DE">DE</option>
+        <option value="FL">FL</option>
+        <option value="GA">GA</option>
+        <option value="HI">HI</option>
+        <option value="ID">ID</option>
+        <option value="IL">IL</option>
+        <option value="IN">IN</option>
+        <option value="IA">IA</option>
+        <option value="KS">KS</option>
+        <option value="KY">KY</option>
+        <option value="LA">LA</option>
+        <option value="ME">ME</option>
+        <option value="MD">MD</option>
+        <option value="MA">MA</option>
+        <option value="MI">MI</option>
+        <option value="MN">MN</option>
+        <option value="MS">MS</option>
+        <option value="MO">MO</option>
+        <option value="MT">MT</option>
+        <option value="NE">NE</option>
+        <option value="NV">NV</option>
+        <option value="NH">NH</option>
+        <option value="NJ">NJ</option>
+        <option value="NM">NM</option>
+        <option value="NY">NY</option>
+        <option value="NC">NC</option>
+        <option value="ND">ND</option>
+        <option value="OH">OH</option>
+        <option value="OK">OK</option>
+        <option value="OR">OR</option>
+        <option value="PA">PA</option>
+        <option value="RI">RI</option>
+        <option value="SC">SC</option>
+        <option value="SD">SD</option>
+        <option value="TN">TN</option>
+        <option value="TX">TX</option>
+        <option value="UT">UT</option>
+        <option value="VT">VT</option>
+        <option value="VA">VA</option>
+        <option value="WA">WA</option>
+        <option value="WV">WV</option>
+        <option value="WI">WI</option>
+        <option value="WY">WY</option>
+
+        <option value="DC">DC</option>
+        <option value="PR">PR</option>
+    </select>
+    <br>
+    <span id="stateError" class="error"></span>
+    </td>
+
+    <td>Zip:</td>
+    <td><input type="text" name="zip" id="zip" maxlength="10" required
+        pattern="^\d{5}(-\d{4})?$" title="ZIP code must be 12345 or 12345-6789"
+        oninput="checkZip()" onblur="checkZip()">
+        <br>
+        <span id="zipError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Email:</td>
+    <td><input type="email" name="email" id="email" required
+        title="Enter a valid email address (example: name@email.com)"
+        oninput="checkEmail()" onblur="checkEmail()">
+        <br>
+        <span id="emailError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Phone:</td>
+    <td><input type="tel" name="phone" id="phone" placeholder="123-456-7890" required
+        pattern="^\d{3}-\d{3}-\d{4}$" title="Phone must be in format: 123-456-7890"
+        oninput="checkPhone()" onblur="checkPhone()">
+        <br>
+        <span id="phoneError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Describe Current Symptoms:</td>
+    <td>
+        <textarea name="symptoms" id="symptoms" rows="3" cols="50"
+        title="Optional: describe symptoms (avoid using quotes)">
+        </textarea>
+    </td>
+</tr>
+
+<tr>
+    <td>Past Illnesses:</td>
+    <td>
+        <input type="checkbox" name="illness" value="chickenpox"
+        title="Select if you have had Chicken Pox">Chicken Pox
+        <input type="checkbox" name="illness" value="Measles"
+        title="Select if you have had Measles">Measles
+        <input type="checkbox" name="illness" value="Covid-19"
+        title="Select if you have had Covid-19">Covid-19
+        <input type="checkbox" name="illness" value="Tetanus"
+        title="Select if you have had Tetanus">Tetanus
+        <input type="checkbox" name="illness" value="Flu"
+        title="Select if you have had Flu">Flu
+        
+    </td>
+</tr>
+
+<tr>
+    <td>Gender:</td>
+    <td>
+        <input type="radio" name="gender" value="male" required
+        title="Select your gender">Male
+        
+        <input type="radio" name="gender" value="female"
+        title="Select your gender">Female
+        
+        <input type="radio" name="gender" value="other"
+        title="Select your gender">Other
+    </td>
+</tr>
+
+<tr>
+    <td>Vaccinated?</td>
+    <td>
+        <input type="radio" name="vaccinated" value="yes" required
+        title="Have you been vaccinated?">Yes
+        
+        <input type="radio" name="vaccinated" value="no"
+        title="Have you been vaccinated?">No
+    </td>
+</tr>
+
+<tr>
+    <td>Have Insurance?</td>
+    <td>
+        <input type="radio" name="insurance" value="yes" required
+        title="Do you currently have insurance?">Yes
+        
+        <input type="radio" name="insurance" value="no"
+        title="Do you currently have insurance?">No
+    </td>
+</tr>
+
+<tr>
+    <td>Health Rating (1-10):</td>
+    <td>
+        <input type="range" name="health" min="1" max="10" value="5" id="healthSlider" oninput="updateSliderValue()">
+        <span id="sliderValue">5</span>
+    </td>
+</tr>
+
+<tr>
+    <td>Desired User ID:</td>
+    <td><input type="text" name="userid" id="userid" maxlength="30" required
+        pattern="^[A-Za-z][A-Za-z0-9_-]{4,29}$" 
+        title="User ID must be 5–30 characters, start with a letter, and contain only letters, numbers, underscores, or dashes"
+        oninput="checkUserID()" onblur="checkUserID()">
+        <br>
+        <span id="useridError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Password:</td>
+    <td><input type="password" name="password" id="password" required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d\"']).{8,30}$"
+        title="Password must be 8–30 characters, include uppercase, lowercase, number, and special character, and no quotes"
+        oninput="checkPassword()" onblur="checkPassword()">
+        <br>
+        <span id="passwordError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Re-enter Password:</td>
+    <td><input type="password" name="repassword" id="repassword" required
+        title="Re-enter the same password"
+        oninput="checkPasswordMatch()" onblur="checkPasswordMatch()">
+        <br>
+        <span id="repasswordError" class="error"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <input type="reset" value="CLEAR AND START OVER">
+    </td>
+    <td>
+        <input type="button" value="Review" onclick="reviewForm();">
+        <input type="submit" value="Submit">
+    </td>
+</tr>
+
+</table>
+</form>
+<div id="reviewSection">
+    <h2>PLEASE REVIEW THIS INFORMATION</h2>
+    <div id="reviewOutput"></div>
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div id="footer">
+    <p>Houston Cougar Medical | 4302 University Dr | Houston, TX 77204</p>
+    <button onclick="alert('Contact us at support@HoustonCougarmedical.com')">Contact Us</button>
+</div>
+
+<!-- End of patient-form.html -->
+ <script src="SummerHomeworkscript.js"></script>
+
+</body>
+</html>
